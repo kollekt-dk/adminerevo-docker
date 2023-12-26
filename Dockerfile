@@ -44,7 +44,7 @@ COPY	entrypoint.sh /usr/local/bin/
 ENTRYPOINT	[ "entrypoint.sh", "docker-php-entrypoint" ]
 
 USER	adminer
-
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 CMD ["apache2-foreground"]
 
 EXPOSE 80

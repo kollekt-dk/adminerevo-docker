@@ -26,7 +26,7 @@ RUN apt-get update \
 RUN	docker-php-ext-install mysqli
 
 COPY	*.php /var/www/html/
-
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 ENV	ADMINER_VERSION 4.8.3
 ENV	ADMINER_DOWNLOAD_SHA256 d430831b88dc767922a66ff663c1450fb61b6763d60adb26822d481c54a2a186
 ENV	ADMINER_COMMIT ae0d5ebf1739d17460d2ee5457d6e33e4bf847b9
@@ -44,7 +44,7 @@ COPY	entrypoint.sh /usr/local/bin/
 ENTRYPOINT	[ "entrypoint.sh", "docker-php-entrypoint" ]
 
 USER	adminer
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
 CMD ["apache2-foreground"]
 
 EXPOSE 80

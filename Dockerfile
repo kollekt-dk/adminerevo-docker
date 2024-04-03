@@ -20,9 +20,11 @@ WORKDIR /var/www/html
 # Here you would want to enable all the DB types you need
 RUN apt-get update \
     && apt-get install -y \
-        git \
+        git libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
+RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
+RUN docker-php-ext-install pgsql pdo pdo_pgsql
 RUN	docker-php-ext-install mysqli
 
 COPY	*.php /var/www/html/

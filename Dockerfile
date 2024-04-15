@@ -24,8 +24,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
-RUN docker-php-ext-install pgsql pdo pdo_pgsql
-RUN	docker-php-ext-install mysqli
+RUN docker-php-ext-install pgsql pdo pdo_pgsql mysqli
 
 COPY	*.php /var/www/html/
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf

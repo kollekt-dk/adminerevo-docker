@@ -46,6 +46,8 @@ ENTRYPOINT	[ "entrypoint.sh", "docker-php-entrypoint" ]
 
 USER	adminer
 
+RUN sed -i "s/Listen 80/Listen ${PORT:-8080}/g" /etc/apache2/ports.conf
+
 CMD ["apache2-foreground"]
 
-EXPOSE 80
+EXPOSE 8080

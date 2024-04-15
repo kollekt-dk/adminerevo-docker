@@ -37,5 +37,4 @@ jobs:
         IMAGE_TAG: ${{ env.LATEST_RELEASE }}
         IMAGE_NAME: ghcr.io/kollekt-dk/adminerevo
       run: |
-        docker build . --file Dockerfile --tag $IMAGE_NAME:$IMAGE_TAG
-        docker push $IMAGE_NAME:$IMAGE_TAG
+        docker buildx build . --file Dockerfile --push --platform linux/arm64,linux/amd64 --tag $IMAGE_NAME:$IMAGE_TAG

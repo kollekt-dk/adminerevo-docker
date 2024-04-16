@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:8.3.3-apache
 
 
 RUN	echo "upload_max_filesize = 128M" >> /usr/local/etc/php/conf.d/0-upload_large_dumps.ini \
@@ -28,9 +28,9 @@ RUN docker-php-ext-install pgsql pdo pdo_pgsql mysqli
 
 COPY	*.php /var/www/html/
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
-ENV	ADMINER_VERSION 4.8.3
-ENV	ADMINER_DOWNLOAD_SHA256 d430831b88dc767922a66ff663c1450fb61b6763d60adb26822d481c54a2a186
-ENV	ADMINER_COMMIT ae0d5ebf1739d17460d2ee5457d6e33e4bf847b9
+ENV	ADMINER_VERSION 4.8.4
+ENV	ADMINER_DOWNLOAD_SHA256 e9a9bc2cc2ac46d6d92f008de9379d2b21a3764a5f8956ed68456e190814b149
+ENV	ADMINER_COMMIT f1e13af9252bfd88d816ef72593513c13adf1dd5
 
 RUN	set -x \
 &&	curl -fsSL "https://github.com/adminerevo/adminerevo/releases/download/v$ADMINER_VERSION/adminer-$ADMINER_VERSION.php" -o adminer.php \

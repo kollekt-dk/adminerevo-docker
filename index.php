@@ -17,6 +17,14 @@ namespace docker {
 
 				return parent::_callParent($function, $args);
 			}
+
+			function dumpFormat() {
+				return array();
+			}
+
+			function dumpOutput() {
+				return array();
+			}
 		}
 
 		$plugins = [];

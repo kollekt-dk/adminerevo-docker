@@ -17,4 +17,6 @@ done
 
 touch .adminer-init || true
 
+echo 'OK' > _healthz || true
+
 exec "$@"

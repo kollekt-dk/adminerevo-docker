@@ -35,6 +35,12 @@ namespace {
 		exit;
 	}
 
+	if (basename($_SERVER['DOCUMENT_URI'] ?? $_SERVER['REQUEST_URI']) === 'healthz') {
+		header('Content-Type: text/plain');
+		echo 'OK';
+		exit;
+	}
+
 	function adminer_object() {
 		return \docker\adminer_object();
 	}

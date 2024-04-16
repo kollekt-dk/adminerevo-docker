@@ -11,7 +11,7 @@ jobs:
       packages: write
       contents: read
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
       # Sets the latest release tag to env variable ${{ env.LATEST_RELEASE }}
     - name: Get latest release tag

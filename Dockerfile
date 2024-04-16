@@ -41,12 +41,13 @@ RUN	set -x \
 &&	cp -r /tmp/adminer/designs/ /tmp/adminer/plugins/ . \
 &&	rm -rf /tmp/adminer/
 
+RUN apt-get update && apt-get install -y sed && rm -rf /var/lib/apt/lists/*
+RUN sed -i "s/Listen 80/Listen ${PORT:-8080}/g" /etc/apache2/ports.conf
+
 COPY	entrypoint.sh /usr/local/bin/
 ENTRYPOINT	[ "entrypoint.sh", "docker-php-entrypoint" ]
 
 USER	adminer
-
-RUN sed -i "s/Listen 80/Listen ${PORT:-8080}/g" /etc/apache2/ports.conf
 
 CMD ["apache2-foreground"]
 
